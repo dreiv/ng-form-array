@@ -3,7 +3,12 @@
   <input formControlName="name" />
   <ng-container formArrayName="skills">
     <ul *ngFor="let _ of skills.controls; index as i">
-      <li><input [formControlName]="i" /></li>
+      <li>
+        <ng-container [formGroupName]="i">
+          <input formControlName="name" />
+          <input formControlName="level" />
+        </ng-container>
+      </li>
     </ul>
   </ng-container>
 </form>

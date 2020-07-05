@@ -9,8 +9,14 @@ export class UserComponent implements OnInit {
   user = new FormGroup({
     name: new FormControl('Drei'),
     skills: new FormArray([
-      new FormControl('Tennis'),
-      new FormControl('Secretary')
+      new FormGroup({
+        name: new FormControl('Secretary'),
+        level: new FormControl('3')
+      }),
+      new FormGroup({
+        name: new FormControl('Tennis'),
+        level: new FormControl('5')
+      })
     ])
   });
 

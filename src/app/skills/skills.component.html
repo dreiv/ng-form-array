@@ -1,8 +1,12 @@
-<button (click)="addSkill()">Add Skill</button><br>
+<button (click)="addSkill()">Add Skill</button>
+<button (click)="prepend()">Prepend Skill</button>
+<button (click)="clear()">Clear Skills</button>
+<br>
 
 {{skills.value | json }}
 <hr>
 
 <div *ngFor="let control of skills.controls; index as i">
   <input [formControl]="skills.controls[i]" />
+  <button (click)="removeSkill(i)">X</button>
 </div>

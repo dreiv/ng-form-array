@@ -8,8 +8,7 @@ import {
 
 @Component({
   selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss']
+  templateUrl: './skills.component.html'
 })
 export class SkillsComponent implements OnInit {
   skills = new FormArray([

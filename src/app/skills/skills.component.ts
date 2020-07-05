@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl } from '@angular/forms';
+import { FormArray, FormControl, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-skills',
@@ -27,6 +27,14 @@ export class SkillsComponent implements OnInit {
 
   removeSkill(index: number): void {
     this.skills.removeAt(index);
+  }
+
+  replaceFirst(): void {
+    this.skills.setControl(0, new FormControl(''));
+  }
+
+  get first(): AbstractControl {
+    return this.skills.at(0).value;
   }
 
   clear(): void {

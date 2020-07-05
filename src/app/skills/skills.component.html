@@ -8,7 +8,10 @@ Skills: {{ skills.value | json }}<br>
 First: {{ first | json }}
 <hr>
 
-<div *ngFor="let control of skills.controls; index as i">
-  <input [formControl]="skills.controls[i]" />
+<div *ngFor="let skill of skills.controls; index as i">
+  <ng-container [formGroup]="skill">
+    <input formControlName="level" />
+    <input formControlName="name" />
+  </ng-container>
   <button (click)="removeSkill(i)">X</button>
 </div>

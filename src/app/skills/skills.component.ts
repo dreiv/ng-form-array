@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, AbstractControl } from '@angular/forms';
+import {
+  FormArray,
+  FormControl,
+  AbstractControl,
+  FormGroup
+} from '@angular/forms';
 
 @Component({
   selector: 'app-skills',
@@ -8,9 +13,18 @@ import { FormArray, FormControl, AbstractControl } from '@angular/forms';
 })
 export class SkillsComponent implements OnInit {
   skills = new FormArray([
-    new FormControl('Reactive'),
-    new FormControl('Array'),
-    new FormControl('Form')
+    new FormGroup({
+      level: new FormControl('3'),
+      name: new FormControl('Reactive')
+    }),
+    new FormGroup({
+      level: new FormControl('7'),
+      name: new FormControl('Array')
+    }),
+    new FormGroup({
+      level: new FormControl('1'),
+      name: new FormControl('Form')
+    })
   ]);
 
   constructor() {}
@@ -18,11 +32,22 @@ export class SkillsComponent implements OnInit {
   ngOnInit(): void {}
 
   prepend(): void {
-    this.skills.insert(0, new FormControl(''));
+    this.skills.insert(
+      0,
+      new FormGroup({
+        level: new FormControl(),
+        name: new FormControl()
+      })
+    );
   }
 
   addSkill(): void {
-    this.skills.push(new FormControl(''));
+    const group = new FormGroup({
+      level: new FormControl(''),
+      name: new FormControl('')
+    });
+
+    this.skills.push(group);
   }
 
   removeSkill(index: number): void {
@@ -30,7 +55,13 @@ export class SkillsComponent implements OnInit {
   }
 
   replaceFirst(): void {
-    this.skills.setControl(0, new FormControl(''));
+    this.skills.setControl(
+      0,
+      new FormGroup({
+        level: new FormControl(),
+        name: new FormControl()
+      })
+    );
   }
 
   get first(): AbstractControl {

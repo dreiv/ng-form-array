@@ -1,0 +1,8 @@
+<button (click)="addSkill()">Add Skill</button><br>
+
+{{skills.value | json }}
+<hr>
+
+<div *ngFor="let control of skills.controls; index as i">
+  <input [formControl]="skills.controls[i]" />
+</div>
